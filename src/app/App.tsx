@@ -1,11 +1,8 @@
 import React from 'react';
+import Routes from '../presentation/components/routes/routes';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello Code Challenge!</h1>
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
