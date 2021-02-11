@@ -21,7 +21,7 @@ const Landing: React.FC = () => {
         </LogoContainer>
         <LandingImage src={landingImg} alt="toDo app" />
         <ButtonsContainer>
-          <Link to="/todos" className="todoLink">
+          <Link to="/todoList" className="todoLink">
             <img src={toDoIcon} alt="toDoIcon" />
             Get Started
           </Link>
