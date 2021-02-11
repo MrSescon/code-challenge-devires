@@ -1,9 +1,9 @@
 import React from 'react';
 import { TodoWrapper, RemoveBtn } from './styles';
-import { TodoTypes } from '../../../../../data/protocols/todo/todo-types';
+import { LoadTodoListModel } from '../../../../../domain/usecases/load-todo-list';
 
 type PropTypes = {
-  todo: TodoTypes;
+  todo: LoadTodoListModel;
 };
 
 const handleOnClick = () => {};
@@ -11,7 +11,7 @@ const handleOnClick = () => {};
 const todo: React.FC<PropTypes> = ({ todo }: PropTypes) => {
   return (
     <TodoWrapper>
-      {todo.value}
+      {`${todo.title} - ${todo.description}`}
       <RemoveBtn onClick={handleOnClick}> x </RemoveBtn>
     </TodoWrapper>
   );

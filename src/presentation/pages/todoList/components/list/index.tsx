@@ -1,17 +1,26 @@
-import React from 'react'
-import Todo from '../todo'
-import { TodoTypes } from '../../../../../data/protocols/todo/todo-types'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../../../data/store';
+import { getTodos } from '../../../../../data/store/ducks/todo.duck';
+import Todo from '../todo';
 
-const list: React.FC = () => {
+const List: React.FC = () => {
+  const dispatch = useDispatch();
+  const { todos } = useSelector((state: RootState) => state.todoReducer);
+
+  useEffect(() => {
+    dispatch(getTodos());
+  },[]);
+
   let allTodos = [];
-  const todos: TodoTypes[] = [];
+
   if (todos.length > 0) {
     allTodos = todos.map((todo) => {
-      return <Todo key={todo.id} todo={todo} />;
+      return <Todo key={todo.id.toString()} todo={todo} />;
     });
   } else {
     allTodos.push(
-      <h3 key="1" id="acu">
+      <h3 key="acu" id="acu">
         All caught up !
       </h3>
     );
@@ -25,4 +34,4 @@ const list: React.FC = () => {
   );
 };
 
-export default list;
+export default List;
