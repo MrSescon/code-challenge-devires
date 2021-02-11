@@ -2,10 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 import Colors from './colors';
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
   :root {
     font-size: 60%;
-    font-family: 'Pangolin', cursive;
+    font-family: 'Bungee Hairline';
   }
 
   * {

@@ -1,11 +1,11 @@
-import { ColorsTypes } from '../protocols/colors';
+import { ColorsTypes } from '../protocols/colors-types';
 
 const Colors: ColorsTypes = {
-  black:' #333',
+  black: ' #333',
   purple: '#6d639a',
   pink: '#d63f74',
-  white:' #fefefe',
-  grey: 'rgba(#333, .5)',
+  pinkLighter: '#ff5c8a',
+  white: ' #fefefe',
   backgrnd: '#F0F0F7',
   primaryLighter: '#ff7b00',
   primaryLight: '#ff9f1c',
