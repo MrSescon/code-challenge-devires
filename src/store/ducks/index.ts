@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import exampleReducer from './example.duck';
+import reducer from './todo.duck';
 
 export default combineReducers({
-  exampleReducer,
+  reducer,
 });
