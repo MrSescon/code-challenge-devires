@@ -19,7 +19,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${Colors.colorBackground};
+    background: ${Colors.backgrnd};
   }
 
   #root {
@@ -33,7 +33,7 @@ export default createGlobalStyle`
   button,
   textarea {
     font: 800 1.6rem;
-    color: ${Colors.colorTextBase};
+    color: ${Colors.textBase};
   }
 
   .container {

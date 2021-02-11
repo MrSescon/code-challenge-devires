@@ -7,8 +7,8 @@ export const PageLanding = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${Colors.colorTextInPrimary};
-  background: ${Colors.colorPrimary};
+  color: ${Colors.textInPrimary};
+  background: ${Colors.primary};
 `;
 
 export const LandingImage = styled.img`
@@ -26,7 +26,7 @@ export const LogoContainer = styled.div`
   margin: 0;
 
   h1 {
-    color: ${Colors.colorTitleInPrimary};
+    color: ${Colors.titleInPrimary};
     font-size: 8rem;
     margin: 0;
   }
@@ -69,7 +69,7 @@ export const ButtonsContainer = styled.div`
     justify-content: center;
 
     text-decoration: none;
-    color: ${Colors.colorButtonText};
+    color: ${Colors.buttonText};
 
     transition: background-color 0.2s;
   }
@@ -83,11 +83,11 @@ export const ButtonsContainer = styled.div`
   }
 
   a.todoLink {
-    background: ${Colors.colorPrimaryLighter};
+    background: ${Colors.primaryLighter};
   }
 
   a.todoLink:hover {
-    background: ${Colors.colorPrimaryLight};
+    background: ${Colors.primaryLight};
   }
 
   a img {

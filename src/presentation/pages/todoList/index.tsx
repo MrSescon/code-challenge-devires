@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import {Form, Title, List, Todo } from '../../components'
+import {Form, Title, List } from '../../components'
 
-const todoList: React.FC = () => {
+const TodoList: React.FC = () => {
 
 	const introData = [
 		{
@@ -91,4 +91,4 @@ const todoList: React.FC = () => {
 	);
 }
 
-export default todoList;
+export default TodoList;

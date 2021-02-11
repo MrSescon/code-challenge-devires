@@ -1,6 +1,6 @@
 import React from 'react';
 import { TodoWrapper, RemoveBtn } from './styles';
-import { TodoTypes } from '../../../protocols/todo-types'
+import { TodoTypes } from '../../protocols/todo-types'
 
 
 type PropTypes = {
