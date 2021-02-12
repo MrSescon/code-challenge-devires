@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Colors from '../../../../styles/colors';
 
-export const Form = styled.div`
+export const FormContainer = styled.div`
+  display: flex;
   margin-bottom: 50px;
 
   input {

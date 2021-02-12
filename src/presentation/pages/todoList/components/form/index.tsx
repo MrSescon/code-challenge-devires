@@ -1,26 +1,41 @@
-import React from 'react'
-import { Form } from './styles'
+import { addTodo } from 'data/store/ducks/todo.duck';
+import React, { SyntheticEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { FormContainer } from './styles';
 
 // type PropTypes = {
 //   addTodo(): void;
 // }
 
-const form: React.FC = () => {
-  const handleChange = () => {};
+const Form: React.FC = () => {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleNewTodoAddition = () => {};
+  const handleNewTodo = (event: SyntheticEvent) => {
+    event.preventDefault();
+    dispatch(addTodo({ title, description }));
+    setTitle('');
+    setDescription('');
+  };
 
   return (
-    <Form>
+    <FormContainer>
       <input
-        value={''}
-        placeholder="Add todos here..."
+        value={title}
+        placeholder="Add Title here..."
         autoComplete="off"
-        onChange={handleChange}
+        onChange={(event) => setTitle(event.target.value)}
       />
-      <button onClick={handleNewTodoAddition}> + </button>
-    </Form>
+      <input
+        value={description}
+        placeholder="Add description here..."
+        autoComplete="off"
+        onChange={(event) => setDescription(event.target.value)}
+      />
+      <button onClick={handleNewTodo}> + </button>
+    </FormContainer>
   );
 };
 
-export default form;
+export default Form;

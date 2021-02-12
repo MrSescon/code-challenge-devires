@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit';
-import { makeRemoteLoadTodoList } from '../../../main/factories/usecases/load-todo-list/remote-load-todo-list-factory';
-import { makeRemoteRemoveTodoList } from '../../../main/factories/usecases/remove-todo-list/remote-remove-todo-factory';
+import { makeRemoteLoadTodos } from '../../../main/factories/usecases/load-todos/remote-load-todos-factory';
+import { makeRemoteRemoveTodo } from '../../../main/factories/usecases/remove-todo/remote-remove-todo-factory';
+import { makeRemoteAddTodo } from '../../../main/factories/usecases/add-todo/remote-add-todo-factory';
 import { RootState } from '../../store';
 import { TodoModel } from '../../../domain/models/todo-model';
+import { AddTodoModel } from '../../../domain/models/add-todo-model';
 
 interface State {
   loading: boolean;
@@ -39,18 +41,38 @@ export const { setLoading, setError, setTodos } = toDoSlice.actions;
 
 export default toDoSlice.reducer;
 
+const loadList = (dispatch: Dispatch) => {
+  makeRemoteLoadTodos()
+    .loadAll()
+    .then((todo) => {
+      dispatch(setError(null));
+      dispatch(setTodos(todo));
+      dispatch(setLoading(false));
+    })
+    .catch((err: Error) => {
+      dispatch(setLoading(false));
+      dispatch(setError(err.message));
+    });
+};
+
 export const getTodos = () => async (
   dispatch: Dispatch,
   getState: () => RootState
 ) => {
   const state = getState();
   dispatch(setLoading(true));
-  makeRemoteLoadTodoList()
-    .loadAll()
-    .then((todo) => {
-      dispatch(setError(null));
-      dispatch(setTodos(todo));
-      dispatch(setLoading(false));
+  loadList(dispatch);
+};
+export const addTodo = (todo: AddTodoModel) => async (
+  dispatch: Dispatch,
+  getState: () => RootState
+) => {
+  const state = getState();
+  dispatch(setLoading(true));
+  makeRemoteAddTodo()
+    .addTodo(todo)
+    .then(() => {
+      loadList(dispatch);
     })
     .catch((err: Error) => {
       dispatch(setLoading(false));
@@ -63,20 +85,10 @@ export const removeTodo = (id: number) => async (
 ) => {
   const state = getState();
   dispatch(setLoading(true));
-  makeRemoteRemoveTodoList(id.toString())
+  makeRemoteRemoveTodo(id.toString())
     .removeTodo()
     .then(() => {
-      makeRemoteLoadTodoList()
-        .loadAll()
-        .then((todo) => {
-          dispatch(setError(null));
-          dispatch(setTodos(todo));
-          dispatch(setLoading(false));
-        })
-        .catch((err: Error) => {
-          dispatch(setLoading(false));
-          dispatch(setError(err.message));
-        });
+      loadList(dispatch);
     })
     .catch((err: Error) => {
       dispatch(setLoading(false));
