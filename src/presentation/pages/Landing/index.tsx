@@ -17,7 +17,7 @@ const Landing: React.FC = () => {
       <PageLandingContent className="container">
         <LogoContainer>
           <h1>LISTFY</h1>
-          <h2>Yours To Do App.</h2>
+          <h2>Your To-Do App.</h2>
         </LogoContainer>
         <LandingImage src={landingImg} alt="toDo app" />
         <ButtonsContainer>

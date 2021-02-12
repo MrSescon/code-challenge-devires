@@ -8,6 +8,6 @@ export const TitleWrapper = styled.div`
   color: ${Colors.black};
 
   @media (min-width: 1100px) {
-    font-size: 12rem;
+    font-size: 6rem;
   }
 `;

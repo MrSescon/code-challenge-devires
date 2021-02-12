@@ -9,11 +9,16 @@ export const TodoWrapper = styled.p`
   padding: 7px;
   padding-right: 28px;
   border: solid 1px transparent;
-  color: ${Colors.white};
+  color: ${Colors.black};
 
   &:hover {
     cursor: pointer;
-    border: solid 1px;
+    color: ${Colors.white};
+    border: solid 1px ${Colors.pink};
+  }
+
+  @media (min-width: 1100px) {
+    font-size: 2.5rem;
   }
 `;
 
@@ -23,10 +28,8 @@ export const RemoveBtn = styled.span`
   top: 50%;
   transform: translateY(-50%);
   transition: all 100ms linear 100ms;
-  visibility: visible;
   :hover {
     cursor: pointer;
-    visibility: visible;
     color: ${Colors.white};
   }
 `;

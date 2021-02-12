@@ -20,7 +20,7 @@ const Todo: React.FC<PropTypes> = ({ todo }: PropTypes) => {
 
   return (
     <TodoWrapper>
-      <strong>${todo.title}</strong> - ${todo.description}
+      <strong>{todo.title}</strong> - {todo.description}
       <RemoveBtn onClick={() => handleDeleteTodo(todo.id)}> x </RemoveBtn>
     </TodoWrapper>
   );

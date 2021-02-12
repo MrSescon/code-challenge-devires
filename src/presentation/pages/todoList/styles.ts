@@ -4,7 +4,6 @@ import Colors from '../../styles/colors';
 export const Container = styled.div`
   font-family: Bungee Hairline !important;
   width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   color: ${Colors.black};
@@ -18,8 +17,6 @@ export const ListContainer = styled.div`
   line-height: 1.5;
   margin: auto;
   text-align: center;
-  width: 80%;
-  height: 80%;
   margin: 60px auto 0 auto;
   padding: 0px 20px;
   border-radius: 5px;

@@ -32,7 +32,7 @@ export const LogoContainer = styled.div`
   }
 
   h2 {
-    font-weight: 500;
+    font-weight: 800;
     font-size: 2.4rem;
     margin: 0;
   }
@@ -44,7 +44,7 @@ export const LogoContainer = styled.div`
     margin: 0;
 
     h1 {
-      font-size: 12rem;
+      font-size: 10rem;
     }
 
     h2 {
@@ -62,7 +62,8 @@ export const ButtonsContainer = styled.div`
   a {
     width: 20rem;
     border-radius: 0.8rem;
-    font: 700 2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
 
     display: flex;
     align-items: center;

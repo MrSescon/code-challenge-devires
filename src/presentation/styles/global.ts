@@ -13,12 +13,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, #root {
-    height: 100vh;
-  }
-
   body {
-    background: ${Colors.backgrnd};
+    background: ${Colors.primary};
   }
 
   #root {
@@ -31,7 +27,8 @@ export default createGlobalStyle`
   input,
   button,
   textarea {
-    font: 800 1.6rem;
+    font-size:1.0rem;
+    font-weight: 800;
     color: ${Colors.textBase};
   }
 
