@@ -6,11 +6,11 @@ import Todo from '../todo';
 
 const List: React.FC = () => {
   const dispatch = useDispatch();
-  const { todos } = useSelector((state: RootState) => state.todoReducer);
+  const { todos, loading } = useSelector((state: RootState) => state.todoReducer);
 
   useEffect(() => {
     dispatch(getTodos());
-  },[]);
+  },[dispatch]);
 
   let allTodos = [];
 
@@ -29,6 +29,7 @@ const List: React.FC = () => {
   return (
     <div id="list">
       <p id="info"> Your Todos: </p>
+      {loading && <p>Loading...</p>}
       {allTodos}
     </div>
   );

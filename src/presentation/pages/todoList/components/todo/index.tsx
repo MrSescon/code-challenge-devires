@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { TodoWrapper, RemoveBtn } from './styles';
-import { LoadTodoListModel } from '../../../../../domain/usecases/load-todo-list';
+import { TodoModel } from '../../../../../domain/models/todo-model';
+import { removeTodo } from '../../../../../data/store/ducks/todo.duck';
 
 type PropTypes = {
-  todo: LoadTodoListModel;
+  todo: TodoModel;
 };
 
-const handleOnClick = () => {};
+const Todo: React.FC<PropTypes> = ({ todo }: PropTypes) => {
+  const dispatch = useDispatch();
 
-const todo: React.FC<PropTypes> = ({ todo }: PropTypes) => {
+  const handleDeleteTodo = useCallback(
+    (id: number) => {
+      dispatch(removeTodo(id));
+    },
+    [dispatch]
+  );
+
   return (
     <TodoWrapper>
-      {`${todo.title} - ${todo.description}`}
-      <RemoveBtn onClick={handleOnClick}> x </RemoveBtn>
+      <strong>${todo.title}</strong> - ${todo.description}
+      <RemoveBtn onClick={() => handleDeleteTodo(todo.id)}> x </RemoveBtn>
     </TodoWrapper>
   );
 };
 
-export default todo;
+export default Todo;

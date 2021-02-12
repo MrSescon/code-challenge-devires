@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from 'styled-components';
+import Colors from '../../../../styles/colors';
 
 export const TodoWrapper = styled.p`
   transition: all 100ms linear 100ms;
@@ -8,7 +9,7 @@ export const TodoWrapper = styled.p`
   padding: 7px;
   padding-right: 28px;
   border: solid 1px transparent;
-  color: $purple;
+  color: ${Colors.white};
 
   &:hover {
     cursor: pointer;
@@ -22,10 +23,10 @@ export const RemoveBtn = styled.span`
   top: 50%;
   transform: translateY(-50%);
   transition: all 100ms linear 100ms;
-  visibility: hidden;
-  &:hover {
+  visibility: visible;
+  :hover {
     cursor: pointer;
     visibility: visible;
-    color: inherit;
+    color: ${Colors.white};
   }
 `;
