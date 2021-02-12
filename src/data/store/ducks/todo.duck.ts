@@ -59,7 +59,7 @@ export const getTodos = () => async (
   dispatch: Dispatch,
   getState: () => RootState
 ) => {
-  const state = getState();
+  getState();
   dispatch(setLoading(true));
   loadList(dispatch);
 };
@@ -67,7 +67,7 @@ export const addTodo = (todo: AddTodoModel) => async (
   dispatch: Dispatch,
   getState: () => RootState
 ) => {
-  const state = getState();
+  getState();
   dispatch(setLoading(true));
   makeRemoteAddTodo()
     .addTodo(todo)
@@ -83,7 +83,7 @@ export const removeTodo = (id: number) => async (
   dispatch: Dispatch,
   getState: () => RootState
 ) => {
-  const state = getState();
+  getState();
   dispatch(setLoading(true));
   makeRemoteRemoveTodo(id.toString())
     .removeTodo()

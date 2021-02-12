@@ -10,7 +10,7 @@ const List: React.FC = () => {
 
   useEffect(() => {
     dispatch(getTodos());
-  },[dispatch]);
+  }, [dispatch]);
 
   let allTodos = [];
 
@@ -18,7 +18,7 @@ const List: React.FC = () => {
     allTodos = todos.map((todo) => {
       return <Todo key={todo.id.toString()} todo={todo} />;
     });
-  } else {
+  } else if (!loading) {
     allTodos.push(
       <h3 key="acu" id="acu">
         All caught up !
