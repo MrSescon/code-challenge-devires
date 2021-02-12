@@ -1,9 +1,4 @@
-export type LoadTodoListModel = {
-  id: number;
-  title: string;
-  description: string;
-};
-
+import { TodoModel } from '../models/todo-model';
 export interface LoadTodoList {
-  loadAll: () => Promise<LoadTodoListModel[]>;
+  loadAll: () => Promise<TodoModel[]>;
 }
