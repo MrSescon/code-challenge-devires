@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit';
 import { makeRemoteLoadTodoList } from '../../../main/factories/usecases/load-todo-list/remote-load-todo-list-factory';
+import { makeRemoteRemoveTodoList } from '../../../main/factories/usecases/remove-todo-list/remote-remove-todo-factory';
 import { RootState } from '../../store';
-import { LoadTodoListModel } from 'domain/usecases/load-todo-list';
+import { TodoModel } from '../../../domain/models/todo-model';
 
 interface State {
   loading: boolean;
   error: string | null;
-  todos: LoadTodoListModel[];
+  todos: TodoModel[];
 }
 
 const INITIAL_STATE: State = {
@@ -27,7 +28,7 @@ const toDoSlice = createSlice({
       ...state,
       error: payload,
     }),
-    setTodos: (state: State, { payload }: PayloadAction<LoadTodoListModel[]>) => ({
+    setTodos: (state: State, { payload }: PayloadAction<TodoModel[]>) => ({
       ...state,
       todos: payload,
     }),
@@ -56,18 +57,32 @@ export const getTodos = () => async (
       dispatch(setError(err.message));
     });
 };
-// export const removeTodo = () => async (
-//   dispatch: Dispatch,
-//   getState: () => RootState
-// ) => {
-//   const state = getState();
-
-//   makeRemoteLoadTodoList()
-//     .loadAll()
-//     .then((todo) => {
-//       dispatch(setTodos(todo));
-//     });
-// };
+export const removeTodo = (id: number) => async (
+  dispatch: Dispatch,
+  getState: () => RootState
+) => {
+  const state = getState();
+  dispatch(setLoading(true));
+  makeRemoteRemoveTodoList(id.toString())
+    .removeTodo()
+    .then(() => {
+      makeRemoteLoadTodoList()
+        .loadAll()
+        .then((todo) => {
+          dispatch(setError(null));
+          dispatch(setTodos(todo));
+          dispatch(setLoading(false));
+        })
+        .catch((err: Error) => {
+          dispatch(setLoading(false));
+          dispatch(setError(err.message));
+        });
+    })
+    .catch((err: Error) => {
+      dispatch(setLoading(false));
+      dispatch(setError(err.message));
+    });
+};
 
 /** Seletor de estado do store já tipado */
 export const selectTodos = (state: RootState) => state.todoReducer;
