@@ -96,5 +96,4 @@ export const removeTodo = (id: number) => async (
     });
 };
 
-/** Seletor de estado do store já tipado */
 export const selectTodos = (state: RootState) => state.todoReducer;
