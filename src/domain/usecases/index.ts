@@ -1,2 +1,3 @@
-export * from './load-todo-list';
-export * from './remove-todo-list';
+export * from './load-todos';
+export * from './add-todo';
+export * from './remove-todo';

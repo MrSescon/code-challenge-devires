@@ -1,9 +1,9 @@
 import { HttpClient, HttpStatusCode } from '../../protocols/http';
 import { UnexpectedError } from '../../../domain/errors/unexpected-error';
-import { LoadTodoList } from 'domain/usecases/load-todo-list';
+import { LoadTodos } from 'domain/usecases/load-todos';
 import { TodoModel } from '../../../domain/models/todo-model';
 
-export class RemoteLoadTodoList implements LoadTodoList {
+export class RemoteLoadTodos implements LoadTodos {
   private readonly url: string;
   private readonly httpClient: HttpClient<TodoModel[]>;
 

@@ -1,8 +1,8 @@
 import { HttpClient, HttpStatusCode } from '../../protocols/http';
 import { UnexpectedError } from '../../../domain/errors/unexpected-error';
-import { RemoveTodoList } from 'domain/usecases/';
+import { RemoveTodo } from 'domain/usecases/';
 
-export class RemoteRemoveTodoList implements RemoveTodoList {
+export class RemoteRemoveTodo implements RemoveTodo {
   private readonly url: string;
   private readonly httpClient: HttpClient<Record<string, unknown>>;
 

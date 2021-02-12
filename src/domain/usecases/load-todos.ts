@@ -1,4 +1,5 @@
 import { TodoModel } from '../models/todo-model';
-export interface LoadTodoList {
+
+export interface LoadTodos {
   loadAll: () => Promise<TodoModel[]>;
 }
